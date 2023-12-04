@@ -15,7 +15,7 @@ def main():
         Bienvenidos a store DatuxTec
         1. Crear producto
         2. Listar productos
-        3. Editar producto 
+        3. Editar nombre de producto 
         4. Eliminar producto
         5. Salir"""
         print(opciones)
@@ -35,13 +35,14 @@ def main():
         else:
             print("ingrese una opcion valida")
 
+#funcion que configura la inicializacion de la aplicacion
 def config():
 
     database=bd.Bd()
     query_products="""
         CREATE TABLE  IF NOT EXISTS products (
                     id INTEGER PRIMARY KEY,
-                    name TEXT NOT NULL,
+                    name VARCHAR(100) NOT NULL,
                     price REAL NOT NULL,
                     stock INTEGER NOT NULL
                 );
