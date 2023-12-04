@@ -1,0 +1,53 @@
+import modulos.bd as bd
+from modulos.proceso import *
+
+database=None
+def main():
+    salir=False
+    init=True
+    while not salir:
+        #flag para que se inice solo una vez
+        if init:
+            user=input("ingrese su nombre de usuario temporal: ") 
+            init=False
+            config() ## ejecutar las consideraciones basicas al iniciar la aplicacion
+        opciones="""
+        Bienvenidos a store DatuxTec
+        1. Crear producto
+        2. Listar productos
+        3. Editar producto 
+        4. Eliminar producto
+        5. Salir"""
+        print(opciones)
+        opc=int(input("ingrese una opcion: "))
+        if opc==1:
+            crear_producto(user)
+        elif opc==2:
+            listar_producto(user)
+        elif opc==3:
+            editar_nombre(user)
+        elif opc==4:
+            eliminar_producto(user)
+        elif opc==5:
+            salir=True
+            print("terminando sesion....")
+            break
+        else:
+            print("ingrese una opcion valida")
+
+def config():
+
+    database=bd.Bd()
+    query_products="""
+        CREATE TABLE  IF NOT EXISTS products (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    price REAL NOT NULL,
+                    stock INTEGER NOT NULL
+                );
+    """
+    database.execute_query(query_products)
+
+
+if __name__=='__main__':
+    main()
