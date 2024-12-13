@@ -2,5 +2,4 @@
 # sirve para realizar alguna especie de aclaración en mi código
 
 
-
 print('Hola soy nuevo en python')
